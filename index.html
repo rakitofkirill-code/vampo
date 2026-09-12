@@ -28,7 +28,7 @@
     :root {
       --bg: #06080c;
       --bg-2: #0a0e15;
-      --bg-card: rgba(14, 20, 30, 0.65);
+      --bg-card: #0e141e;
       --panel: rgba(255, 255, 255, 0.03);
       --panel-hover: rgba(42, 171, 238, 0.05);
       --line: rgba(255, 255, 255, 0.08);
@@ -115,9 +115,7 @@
     }
     .site-header.scrolled {
       padding: 10px 0;
-      background: rgba(6, 8, 12, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(6, 8, 12, 0.96);
       border-bottom-color: var(--line);
     }
     .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
@@ -278,7 +276,6 @@
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
       pointer-events: none;
       will-change: transform;
     }
@@ -287,7 +284,7 @@
       height: 560px;
       top: -180px;
       right: -120px;
-      background: radial-gradient(circle, rgba(42, 171, 238, 0.28), transparent 65%);
+      background: radial-gradient(circle, rgba(42, 171, 238, 0.15) 0%, rgba(42, 171, 238, 0.05) 45%, transparent 70%);
       animation: drift1 24s ease-in-out infinite alternate;
     }
     .orb-2 {
@@ -295,7 +292,7 @@
       height: 480px;
       bottom: -180px;
       left: -140px;
-      background: radial-gradient(circle, rgba(42, 171, 238, 0.16), transparent 65%);
+      background: radial-gradient(circle, rgba(42, 171, 238, 0.11) 0%, rgba(42, 171, 238, 0.04) 45%, transparent 70%);
       animation: drift2 30s ease-in-out infinite alternate;
     }
     @keyframes drift1 { to { transform: translate(-80px, 60px) scale(1.12); } }
@@ -592,20 +589,8 @@
 
     /* ---------- 3D Tilt Cards Base ---------- */
     .bento-card, .work-card, .step, .faq-item {
-      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-      transition: transform 0.18s ease, border-color 0.25s ease, background-color 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
     }
-    .bento-card::after, .work-card::after, .step::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(140, 200, 255, 0.12), transparent 45%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-    .bento-card:hover::after, .work-card:hover::after, .step:hover::after { opacity: 1; }
 
     /* ---------- Services Bento ---------- */
     .bento {
@@ -623,7 +608,7 @@
       overflow: hidden;
     }
     .bento-card:hover {
-      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+      transform: translateY(-4px);
       border-color: rgba(42, 171, 238, 0.45);
       background: var(--panel-hover);
     }
@@ -699,7 +684,7 @@
       flex-direction: column;
     }
     .work-card:hover {
-      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-5px);
+      transform: translateY(-5px);
       border-color: rgba(42, 171, 238, 0.45);
     }
     .work-visual {
@@ -886,7 +871,7 @@
       border-radius: var(--radius);
     }
     .step:hover {
-      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+      transform: translateY(-4px);
       border-color: rgba(42, 171, 238, 0.45);
     }
     .step-num {
@@ -933,7 +918,6 @@
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 36px 32px;
-      backdrop-filter: blur(16px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     }
     .calc-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
@@ -1030,32 +1014,6 @@
         radial-gradient(600px 320px at 50% -10%, rgba(42, 171, 238, 0.2), transparent 70%),
         var(--panel);
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
-    }
-    .border-beam {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      border: 1px solid transparent;
-      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-    .border-beam::after {
-      content: "";
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      background: linear-gradient(135deg, var(--accent), #fff);
-      top: -125px;
-      left: 50%;
-      border-radius: 50%;
-      filter: blur(12px);
-      animation: beamRotate 12s linear infinite;
-    }
-    @keyframes beamRotate {
-      0% { transform: rotate(0deg) translate(280px) rotate(0deg); }
-      100% { transform: rotate(360deg) translate(280px) rotate(-360deg); }
     }
 
     .contact-actions {
@@ -1193,7 +1151,7 @@
     /* ---------- Reduced Motion ---------- */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .orb-1, .orb-2, .border-beam::after, .ticker-track { animation: none; }
+      .orb-1, .orb-2, .ticker-track { animation: none; }
       .msg { display: block; animation: none; }
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
       * { transition-duration: 0.01ms !important; }
@@ -1328,7 +1286,7 @@
         </div>
 
         <div class="bento">
-          <article class="bento-card wide tilt reveal">
+          <article class="bento-card wide reveal">
             <span class="bento-num" aria-hidden="true">01</span>
             <div class="icon-chip">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3a2 2 0 01-1 1.732V7h4c2.5 0 4 1.5 4 4v6c0 2.5-1.5 4-4 4l-10-.008C4.5 21 3 19.5 3 17v-6c0-2.5 1.5-4 4-4h4V4.732A2 2 0 1114 3zm-4 10a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
@@ -1343,7 +1301,7 @@
             </div>
           </article>
 
-          <article class="bento-card tilt reveal">
+          <article class="bento-card reveal">
             <span class="bento-num" aria-hidden="true">02</span>
             <div class="icon-chip">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V4a2 2 0 00-2-2H4zm15 12a1 1 0 001-1V5a1 1 0 00-1-1H5a1.002 1.002 0 00-1 1v8a1 1 0 001 1h14z"/><path d="M13 20v-1h-2v1H7.998a.998.998 0 00-.999.997L7 22h10l.001-1.003a.998.998 0 00-.998-.997H13z"/></svg>
@@ -1353,7 +1311,7 @@
             <div class="tags"><span class="tag">дизайн</span><span class="tag">домен</span><span class="tag">деплой</span><span class="tag">адаптив</span></div>
           </article>
 
-          <article class="bento-card tilt reveal">
+          <article class="bento-card reveal">
             <span class="bento-num" aria-hidden="true">03</span>
             <div class="icon-chip">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5v1h4l1 16H3L4 6h4V5a4 4 0 118 0zm-4-2a2 2 0 012 2v1h-4V5a2 2 0 012-2zm-2 6a1 1 0 11-2 0 1 1 0 012 0zm6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
@@ -1363,7 +1321,7 @@
             <div class="tags"><span class="tag">автовыдача</span><span class="tag">CryptoBot</span><span class="tag">Stars</span><span class="tag">карты</span></div>
           </article>
 
-          <article class="bento-card tilt reveal">
+          <article class="bento-card reveal">
             <span class="bento-num" aria-hidden="true">04</span>
             <div class="icon-chip">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.421 5.524A1.42 1.42 0 004 6.944V10.5c0 .905.42.905.905.905.484 0 1.197-.453 1.81-.453 1.067 0 1.809.742 1.809 1.81s-.742 1.81-1.81 1.81c-.612 0-1.293-.453-1.777-.453-.485 0-.937 0-.937.905v3.555A1.42 1.42 0 005.421 20h3.555c.905 0 .905-.452.905-.905 0-.452-.452-1.197-.452-1.81 0-1.067.741-1.809 1.81-1.809 1.067 0 1.809.742 1.809 1.81 0 .612-.453 1.357-.453 1.81 0 .452 0 .904.905.904h3.555a1.42 1.42 0 001.421-1.421V6.945a1.42 1.42 0 00-1.42-1.421H5.42zM18.476 10.5v4.524c0-.905.453-.905.937-.905.228 0 .5.1.787.206.323.12.666.246.99.246 1.069 0 1.81-.741 1.81-1.81 0-1.067-.741-1.809-1.81-1.809-.324 0-.676.127-1.008.246-.295.107-.573.207-.801.207-.484 0-.905 0-.905-.905zM9.88 4.619c0 .452 0 .905-.904.905H13.5c-.905 0-.905-.453-.905-.905 0-.209.097-.48.2-.773.122-.34.253-.707.253-1.036 0-1.069-.742-1.81-1.81-1.81s-1.81.741-1.81 1.81c0 .329.131.697.252 1.036.104.292.201.564.201.773z"/></svg>
@@ -1403,7 +1361,7 @@
 
         <div class="works-grid">
           <!-- Work 1: giftslendbot -->
-          <article class="work-card tilt reveal">
+          <article class="work-card reveal">
             <div class="work-visual" aria-hidden="true">
               <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">t.me/giftslendbot</span></div>
               <div class="bot-preview-box">
@@ -1432,7 +1390,7 @@
           </article>
 
           <!-- Work 2: rexshop.site -->
-          <article class="work-card tilt reveal">
+          <article class="work-card reveal">
             <div class="work-visual" aria-hidden="true">
               <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">https://rexshop.site</span></div>
               <div class="bot-preview-box" style="background: #0f161f">
@@ -1462,7 +1420,7 @@
           </article>
 
           <!-- Work 3: BarigaNumberbot -->
-          <article class="work-card tilt reveal">
+          <article class="work-card reveal">
             <div class="work-visual" aria-hidden="true">
               <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">t.me/BarigaNumberbot</span></div>
               <div class="bot-preview-box">
@@ -1607,7 +1565,7 @@
         </div>
 
         <div class="steps-grid">
-          <article class="step tilt reveal">
+          <article class="step reveal">
             <span class="step-num" aria-hidden="true">01</span>
             <div class="icon-chip">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 9.497v-2H8v2h9zm-3 4v-2H8v2h6z"/><path d="M11.167 20.777c0 .422 0 .634.132.84a.986.986 0 00.479.352c.236.066.391.017.704-.08C17 20.335 22 15.752 22 10.335c0-5.416-4.167-8.333-10-8.333S2 4.919 2 10.335c0 5.417 4.167 8.31 9.167 8.31v2.132zm2-4.132h-2c-2.133 0-3.938-.618-5.172-1.655C4.803 13.988 4 12.483 4 10.335c0-2.14.796-3.63 2.056-4.631C7.374 4.657 9.39 4.002 12 4.002s4.626.655 5.944 1.702c1.26 1 2.056 2.49 2.056 4.631 0 2.078-.963 4.122-2.552 5.888a14.269 14.269 0 01-4.281 3.22v-2.798z"/></svg>
@@ -1616,7 +1574,7 @@
             <p>Рассказываете идею в свободной форме. Я задаю точные вопросы и предлагаю лучшее решение под ваш бюджет.</p>
           </article>
 
-          <article class="step tilt reveal">
+          <article class="step reveal">
             <span class="step-num" aria-hidden="true">02</span>
             <div class="icon-chip">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4a2 2 0 00-2-2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4zm-8 15a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm4.5-8c.69 0 1.25.56 1.25 1.25v5.5a1.25 1.25 0 11-2.5 0v-5.5c0-.69.56-1.25 1.25-1.25zM6 6a1 1 0 011-1h10a1 1 0 011 1v2H6V6zm1.5 13a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm6-6.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm-4.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
@@ -1625,7 +1583,7 @@
             <p>Точный расчёт до старта работ. Фиксируем дедлайн и стоимость — никаких «доплат в процессе».</p>
           </article>
 
-          <article class="step tilt reveal">
+          <article class="step reveal">
             <span class="step-num" aria-hidden="true">03</span>
             <div class="icon-chip">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2h4v2.252a7.992 7.992 0 013.731 2.166L20.001 5l2 3.5-2.274 1.42A8.01 8.01 0 0120 12a8.01 8.01 0 01-.273 2.08L22 15.5 20 19l-2.269-1.418a7.993 7.993 0 01-3.73 2.166V22h-4v-2.252a7.992 7.992 0 01-3.732-2.166L4 19l-2-3.5 2.273-1.42A8.01 8.01 0 014 12c0-.72.095-1.416.273-2.08L2 8.5 4 5l2.27 1.418A7.992 7.992 0 0110 4.252V2zm2 13.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"/></svg>
@@ -1634,7 +1592,7 @@
             <p>Показываю прогресс на каждом этапе в тестовом боте. Правки вносим сразу на лету, а не в конце.</p>
           </article>
 
-          <article class="step tilt reveal">
+          <article class="step reveal">
             <span class="step-num" aria-hidden="true">04</span>
             <div class="icon-chip">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.14 2.004a10 10 0 00-7.069 2.927L9.001 8H6.83a2 2 0 00-1.415.585L1 13h5.783L11 17.217V23l4.415-4.415A2 2 0 0016 17.171v-2.169l3.068-3.065A10 10 0 0022 4.863v-1.86a1 1 0 00-1-1h-1.86zM15 7.5a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0z"/><path d="M8.757 18.243A6 6 0 014.515 20H4v-.514a6 6 0 011.758-4.243L6 15l3 3-.243.243z"/></svg>
@@ -1682,27 +1640,27 @@
               <div class="calc-options-group">
                 <div class="calc-group-title">1. Тип проекта:</div>
                 <div class="calc-pills" id="pills-type">
-                  <button class="calc-pill active" data-type="bot" data-base="20000" data-name="Telegram-бот">Telegram-бот</button>
-                  <button class="calc-pill" data-type="shop" data-base="35000" data-name="Магазин с автовыдачей">Магазин с автовыдачей</button>
-                  <button class="calc-pill" data-type="site" data-base="30000" data-name="Сайт / Лендинг">Сайт / Лендинг</button>
-                  <button class="calc-pill" data-type="custom" data-base="45000" data-name="Сложная интеграция / софт">Интеграция / софт</button>
+                  <button class="calc-pill active" data-type="bot" data-base="8000" data-name="Telegram-бот">Telegram-бот</button>
+                  <button class="calc-pill" data-type="shop" data-base="14000" data-name="Магазин с автовыдачей">Магазин с автовыдачей</button>
+                  <button class="calc-pill" data-type="site" data-base="12000" data-name="Сайт / Лендинг">Сайт / Лендинг</button>
+                  <button class="calc-pill" data-type="custom" data-base="18000" data-name="Сложная интеграция / софт">Интеграция / софт</button>
                 </div>
               </div>
 
               <div class="calc-options-group">
                 <div class="calc-group-title">2. Дополнительные опции:</div>
                 <div class="calc-pills" id="pills-addons">
-                  <button class="calc-pill active" data-cost="9000" data-name="CryptoBot / Оплата">💳 Платёжка (CryptoBot / Stars / Карты)</button>
-                  <button class="calc-pill active" data-cost="10000" data-name="Админка + статистика">📊 Админ-панель и статистика</button>
-                  <button class="calc-pill" data-cost="5000" data-name="Настройка VPS">☁️ Помощь с VPS и сервером</button>
-                  <button class="calc-pill" data-cost="12000" data-name="Срочно 1-2 дня">⚡ Срочный запуск (1-2 дня)</button>
+                  <button class="calc-pill active" data-cost="3500" data-name="CryptoBot / Оплата">💳 Платёжка (CryptoBot / Stars / Карты)</button>
+                  <button class="calc-pill active" data-cost="4000" data-name="Админка + статистика">📊 Админ-панель и статистика</button>
+                  <button class="calc-pill" data-cost="2000" data-name="Настройка VPS">☁️ Помощь с VPS и сервером</button>
+                  <button class="calc-pill" data-cost="5000" data-name="Срочно 1-2 дня">⚡ Срочный запуск (1-2 дня)</button>
                 </div>
               </div>
             </div>
 
             <div class="calc-summary">
               <div class="calc-summary-title">Ориентировочная стоимость:</div>
-              <div class="calc-price" id="calc-price">от 39 000 ₽</div>
+              <div class="calc-price" id="calc-price">от 15 500 ₽</div>
               <div class="calc-timeline" id="calc-time">Срок реализации: ~2-4 дня</div>
               <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.4">Точную смету и срок зафиксируем перед началом работы.</p>
               <a class="btn btn-primary calc-btn" id="calc-tg-btn" href="https://t.me/vampofff" target="_blank" rel="noopener noreferrer">
@@ -1771,7 +1729,6 @@
     <section id="contacts">
       <div class="container">
         <div class="contact-panel reveal">
-          <div class="border-beam"></div>
           <p class="eyebrow">Контакты</p>
           <h2>Обсудим вашу задачу?</h2>
           <p class="section-sub" style="max-width: 520px; margin-inline: auto">
@@ -1981,27 +1938,6 @@
         chatBody.scrollTop = chatBody.scrollHeight;
       });
     });
-
-    // ---------- 3D Tilt Карточек + Блик ----------
-    if (finePointer && !reducedMotion) {
-      document.querySelectorAll(".bento-card, .work-card, .step").forEach((card) => {
-        let rect = null;
-        card.addEventListener("mouseenter", () => { rect = card.getBoundingClientRect(); });
-        card.addEventListener("mousemove", (e) => {
-          if (!rect) rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - 0.5;
-          const y = (e.clientY - rect.top) / rect.height - 0.5;
-          card.style.setProperty("--ry", (x * 7).toFixed(2) + "deg");
-          card.style.setProperty("--rx", (-y * 7).toFixed(2) + "deg");
-          card.style.setProperty("--mx", ((x + 0.5) * 100).toFixed(1) + "%");
-          card.style.setProperty("--my", ((y + 0.5) * 100).toFixed(1) + "%");
-        });
-        card.addEventListener("mouseleave", () => {
-          card.style.setProperty("--rx", "0deg");
-          card.style.setProperty("--ry", "0deg");
-          rect = null;
-        });
-      });
 
       // Магнитные кнопки
       document.querySelectorAll(".btn-primary").forEach((btn) => {
