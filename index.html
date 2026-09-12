@@ -956,6 +956,7 @@
     }
     .calc-summary-title { font-size: 0.86rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
     .calc-price { font-family: "Unbounded", sans-serif; font-size: 1.8rem; font-weight: 700; color: #4ade80; }
+    .calc-usd { font-size: 0.95rem; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
     .calc-timeline { font-size: 0.9rem; color: #8bb2d6; }
     .calc-btn { width: 100%; margin-top: 8px; }
 
@@ -1640,10 +1641,10 @@
               <div class="calc-options-group">
                 <div class="calc-group-title">1. Тип проекта:</div>
                 <div class="calc-pills" id="pills-type">
-                  <button class="calc-pill active" data-type="bot" data-base="3990" data-name="Telegram-бот">Telegram-бот</button>
-                  <button class="calc-pill" data-type="shop" data-base="4299" data-name="Магазин с автовыдачей">Магазин с автовыдачей</button>
-                  <button class="calc-pill" data-type="site" data-base="2499" data-name="Сайт / Лендинг">Сайт / Лендинг</button>
-                  <button class="calc-pill" data-type="custom" data-base="5899" data-name="Сложная интеграция / софт">Интеграция / софт</button>
+                  <button class="calc-pill active" data-type="bot" data-base="3190" data-name="Telegram-бот">Telegram-бот</button>
+                  <button class="calc-pill" data-type="shop" data-base="3499" data-name="Магазин с автовыдачей">Магазин с автовыдачей</button>
+                  <button class="calc-pill" data-type="site" data-base="1699" data-name="Сайт / Лендинг">Сайт / Лендинг</button>
+                  <button class="calc-pill" data-type="custom" data-base="5099" data-name="Сложная интеграция / софт">Интеграция / софт</button>
                 </div>
               </div>
 
@@ -1660,7 +1661,8 @@
 
             <div class="calc-summary">
               <div class="calc-summary-title">Ориентировочная стоимость:</div>
-              <div class="calc-price" id="calc-price">от 5 740 ₽</div>
+              <div class="calc-price" id="calc-price">от 4 940 ₽</div>
+              <div class="calc-usd" id="calc-usd">≈ $62</div>
               <div class="calc-timeline" id="calc-time">Срок реализации: ~2-4 дня</div>
               <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.4">Точную смету и срок зафиксируем перед началом работы.</p>
               <a class="btn btn-primary calc-btn" id="calc-tg-btn" href="https://t.me/vampofff" target="_blank" rel="noopener noreferrer">
@@ -1774,6 +1776,7 @@
     // ==========================================================
     const SITE = {
       telegram: "vampofff",         // Ваш юз в Telegram (без @)
+      usdRate: 80,                  // Курс для показа цен в долларах (1$ = 80₽)
       numbersBot: "BarigaNumberbot" // Бот-магазин номеров
     };
     // ==========================================================
@@ -1992,7 +1995,7 @@
 
     // ---------- Калькулятор проекта ----------
     let calcType = "bot";
-    let basePrice = 3990;
+    let basePrice = 3190;
     let typeName = "Telegram-бот";
     let selectedAddons = [
       { name: "CryptoBot / Оплата", cost: 750 },
@@ -2000,6 +2003,7 @@
     ];
 
     const priceEl = document.getElementById("calc-price");
+    const usdEl = document.getElementById("calc-usd");
     const timeEl = document.getElementById("calc-time");
     const calcTgBtn = document.getElementById("calc-tg-btn");
 
@@ -2007,6 +2011,7 @@
       const addonsCost = selectedAddons.reduce((sum, a) => sum + a.cost, 0);
       const total = basePrice + addonsCost;
       priceEl.textContent = "от " + total.toLocaleString("ru-RU") + " ₽";
+      usdEl.textContent = "≈ $" + Math.round(total / (SITE.usdRate || 80));
 
       let days = "2-4 дня";
       if (calcType === "shop") days = "3-6 дней";
@@ -2019,7 +2024,7 @@
         "Привет! Рассчитал проект на сайте:\n" +
         "• Тип: " + typeName + "\n" +
         "• Опции: " + (addonsText || "базовые") + "\n" +
-        "• Примерный бюджет: ~" + total.toLocaleString("ru-RU") + " ₽\n\n" +
+        "• Примерный бюджет: ~" + total.toLocaleString("ru-RU") + " ₽ (~$" + Math.round(total / (SITE.usdRate || 80)) + ")\n\n" +
         "Хочу обсудить детали!"
       );
       calcTgBtn.href = "https://t.me/" + SITE.telegram + "?text=" + msg;
