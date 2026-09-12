@@ -1215,16 +1215,12 @@
   <!-- Header -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="display: flex; align-items: center;">
         <a class="logo" href="#top" translate="no" aria-label="vampo — на главную">
           <!-- Telegram logotype glyph -->
           <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm4.864-14.161c.154.153.151.487.117.717l-1.177 7.694c-.057.375-.231.834-.531.983-.332.164-.835.038-1.182-.195l-3.306-2.23a.668.668 0 01-.09-1.035l3.387-3.273c.093-.09.144-.261.066-.352-.076-.091-.265-.08-.363-.013l-4.18 2.852c-.657.448-1.48.58-2.245.361l-1.492-.447c-.246-.076-.468-.248-.476-.415-.007-.161.158-.337.435-.47l10.069-4.22c.305-.129.774-.154.968.043z"/></svg>
           vampo
         </a>
-        <div class="status-badge">
-          <span class="pulse-dot"></span>
-          <span>Принимаю заказы</span>
-        </div>
       </div>
 
       <nav class="site-nav" id="primary-nav" aria-label="Основная навигация">
@@ -1232,9 +1228,7 @@
           <li><a href="#services">Услуги</a></li>
           <li><a href="#works">Кейсы</a></li>
           <li><a href="#reviews">Отзывы</a></li>
-          <li><a href="#process">Процесс</a></li>
           <li><a href="#calculator">Калькулятор</a></li>
-          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contacts">Контакты</a></li>
         </ul>
       </nav>
@@ -1258,6 +1252,10 @@
       <div class="orb orb-2" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div>
+          <div class="status-badge" style="margin-bottom: 18px">
+            <span class="pulse-dot"></span>
+            <span>Принимаю заказы</span>
+          </div>
           <div class="eyebrow">✦ Разработка в Telegram & Web</div>
           <h1>Боты и сайты, которые <span class="grad">просто работают</span></h1>
           <p class="hero-sub">
@@ -1684,27 +1682,27 @@
               <div class="calc-options-group">
                 <div class="calc-group-title">1. Тип проекта:</div>
                 <div class="calc-pills" id="pills-type">
-                  <button class="calc-pill active" data-type="bot" data-base="7000" data-name="Telegram-бот">Telegram-бот</button>
-                  <button class="calc-pill" data-type="shop" data-base="12000" data-name="Магазин с автовыдачей">Магазин с автовыдачей</button>
-                  <button class="calc-pill" data-type="site" data-base="10000" data-name="Сайт / Лендинг">Сайт / Лендинг</button>
-                  <button class="calc-pill" data-type="custom" data-base="15000" data-name="Сложная интеграция / софт">Интеграция / софт</button>
+                  <button class="calc-pill active" data-type="bot" data-base="20000" data-name="Telegram-бот">Telegram-бот</button>
+                  <button class="calc-pill" data-type="shop" data-base="35000" data-name="Магазин с автовыдачей">Магазин с автовыдачей</button>
+                  <button class="calc-pill" data-type="site" data-base="30000" data-name="Сайт / Лендинг">Сайт / Лендинг</button>
+                  <button class="calc-pill" data-type="custom" data-base="45000" data-name="Сложная интеграция / софт">Интеграция / софт</button>
                 </div>
               </div>
 
               <div class="calc-options-group">
                 <div class="calc-group-title">2. Дополнительные опции:</div>
                 <div class="calc-pills" id="pills-addons">
-                  <button class="calc-pill active" data-cost="3000" data-name="CryptoBot / Оплата">💳 Платёжка (CryptoBot / Stars / Карты)</button>
-                  <button class="calc-pill active" data-cost="3500" data-name="Админка + статистика">📊 Админ-панель и статистика</button>
-                  <button class="calc-pill" data-cost="2000" data-name="Настройка VPS">☁️ Помощь с VPS и сервером</button>
-                  <button class="calc-pill" data-cost="4000" data-name="Срочно 1-2 дня">⚡ Срочный запуск (1-2 дня)</button>
+                  <button class="calc-pill active" data-cost="9000" data-name="CryptoBot / Оплата">💳 Платёжка (CryptoBot / Stars / Карты)</button>
+                  <button class="calc-pill active" data-cost="10000" data-name="Админка + статистика">📊 Админ-панель и статистика</button>
+                  <button class="calc-pill" data-cost="5000" data-name="Настройка VPS">☁️ Помощь с VPS и сервером</button>
+                  <button class="calc-pill" data-cost="12000" data-name="Срочно 1-2 дня">⚡ Срочный запуск (1-2 дня)</button>
                 </div>
               </div>
             </div>
 
             <div class="calc-summary">
               <div class="calc-summary-title">Ориентировочная стоимость:</div>
-              <div class="calc-price" id="calc-price">от 13 500 ₽</div>
+              <div class="calc-price" id="calc-price">от 39 000 ₽</div>
               <div class="calc-timeline" id="calc-time">Срок реализации: ~2-4 дня</div>
               <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.4">Точную смету и срок зафиксируем перед началом работы.</p>
               <a class="btn btn-primary calc-btn" id="calc-tg-btn" href="https://t.me/vampofff" target="_blank" rel="noopener noreferrer">
