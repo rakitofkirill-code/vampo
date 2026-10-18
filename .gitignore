@@ -1,0 +1,13 @@
+# Local temporary and scratch files
+*.bak
+*.zip
+*.ps1
+*.png
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Notes and drafts
+*.md
+!README.md

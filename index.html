@@ -673,7 +673,7 @@
     }
 
     /* ---------- Works (Portfolio) ---------- */
-    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 50px; }
+    .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; }
     .work-card {
       position: relative;
       background: var(--panel);
@@ -1054,6 +1054,10 @@
       position: relative;
       z-index: 1;
     }
+    .footer-brand-block { display: flex; flex-direction: column; gap: 4px; }
+    .footer-creators { font-size: 0.85rem; color: var(--muted); }
+    .footer-creators a { color: #6cc4ef; font-weight: 700; transition: color 0.2s ease; }
+    .footer-creators a:hover { color: #a4e5ff; text-decoration: underline; }
     .footer-inner {
       display: flex;
       align-items: center;
@@ -1448,6 +1452,35 @@
               </a>
             </div>
           </article>
+
+          <!-- Work 4: CapoSell_bot -->
+          <article class="work-card reveal">
+            <div class="work-visual" aria-hidden="true">
+              <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">t.me/CapoSell_bot</span></div>
+              <div class="bot-preview-box">
+                <div class="bot-preview-header">
+                  <span>🤖 CapoSell AI</span>
+                  <span style="color: #4ade80">● 24/7 автовыдача</span>
+                </div>
+                <div style="font-size: 0.72rem; color: #94a1b0;">Автоматическая продажа ИИ-сервисов и подписок</div>
+                <div class="bot-preview-buttons">
+                  <div class="bot-mini-btn accent">✨ ChatGPT Plus</div>
+                  <div class="bot-mini-btn">🎨 Midjourney</div>
+                  <div class="bot-mini-btn">🧠 Claude Pro</div>
+                  <div class="bot-mini-btn">💳 Пополнить баланс</div>
+                </div>
+              </div>
+            </div>
+            <div class="work-body">
+              <h3 translate="no">CapoSell (@CapoSell_bot)</h3>
+              <p>Автоматизированный бот для продажи ИИ-сервисов и подписок: моментальная автовыдача аккаунтов и ключей, приём платежей, реферальная система и управление каталогом.</p>
+              <div class="tags"><span class="tag">Telegram-бот</span><span class="tag">ИИ-сервисы</span><span class="tag">автовыдача</span><span class="tag">подписки</span></div>
+              <a class="work-link" href="https://t.me/CapoSell_bot" target="_blank" rel="noopener noreferrer">
+                Открыть бота
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1741,7 +1774,12 @@
           <div class="contact-actions">
             <a class="btn btn-primary" data-tg href="https://t.me/vampofff" target="_blank" rel="noopener noreferrer">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm4.864-14.161c.154.153.151.487.117.717l-1.177 7.694c-.057.375-.231.834-.531.983-.332.164-.835.038-1.182-.195l-3.306-2.23a.668.668 0 01-.09-1.035l3.387-3.273c.093-.09.144-.261.066-.352-.076-.091-.265-.08-.363-.013l-4.18 2.852c-.657.448-1.48.58-2.245.361l-1.492-.447c-.246-.076-.468-.248-.476-.415-.007-.161.158-.337.435-.47l10.069-4.22c.305-.129.774-.154.968.043z"/></svg>
-              Написать в Telegram (@vampofff)
+              Написать @vampofff
+            </a>
+            
+            <a class="btn btn-ghost" href="https://t.me/slomnix" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm4.864-14.161c.154.153.151.487.117.717l-1.177 7.694c-.057.375-.231.834-.531.983-.332.164-.835.038-1.182-.195l-3.306-2.23a.668.668 0 01-.09-1.035l3.387-3.273c.093-.09.144-.261.066-.352-.076-.091-.265-.08-.363-.013l-4.18 2.852c-.657.448-1.48.58-2.245.361l-1.492-.447c-.246-.076-.468-.248-.476-.415-.007-.161.158-.337.435-.47l10.069-4.22c.305-.129.774-.154.968.043z"/></svg>
+              Написать @slomnix
             </a>
             
             <button class="copy-tg-btn" id="btn-copy-nick">
@@ -1759,7 +1797,10 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year">2026</span> <span translate="no">Syntax</span> — Telegram-боты · веб-сайты · автоматизация</p>
+      <div class="footer-brand-block">
+        <p>© <span id="year">2026</span> <span translate="no" style="font-weight: 700; color: #fff">Syntax</span> — Telegram-боты · веб-сайты · автоматизация</p>
+        <p class="footer-creators">Разработка: <a href="https://t.me/slomnix" target="_blank" rel="noopener noreferrer">@slomnix</a> и <a href="https://t.me/vampofff" target="_blank" rel="noopener noreferrer">@vampofff</a></p>
+      </div>
       <nav aria-label="Навигация в подвале">
         <a href="#services">Услуги</a>
         <a href="#works">Кейсы</a>
